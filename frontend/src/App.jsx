@@ -1,14 +1,12 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
+import Task from './Task.jsx';
 
 function App() {
 
   return (
     <>
           <h1>Task Tracker</h1>
+          <Task title="Review React State" description="Go over useState and forms" status="Not Started" />
     </>
   )
 }
