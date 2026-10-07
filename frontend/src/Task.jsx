@@ -10,7 +10,7 @@ function Task(props)
             <select name="status" id="status" value={props.status}>
                 <option value="">--Please choose an option--</option>
                 <option value="Not Started">Not Started</option>
-                <option value="In progress">In progress</option>
+                <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
             </select>
             <input type='button' value={"Edit"} />
