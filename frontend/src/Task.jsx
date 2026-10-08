@@ -7,14 +7,13 @@ function Task(props)
             <h4>{props.title}</h4>
             <p>{props.description}</p>
             <label>Status:</label>
-            <select name="status" id="status" value={props.status}>
+            <select name="status" value={props.status} onChange={(e) => props.onEdit(props.id, e.target.value)}>
                 <option value="">--Please choose an option--</option>
                 <option value="Not Started">Not Started</option>
                 <option value="In Progress">In Progress</option>
                 <option value="Completed">Completed</option>
             </select>
-            <input type='button' value={"Edit"} />
-            <input type='button' value={"Delete"} />
+            <input type='button' value={"Delete"} onClick={() => props.onDelete(props.id)}/>
         </>
     )
 }

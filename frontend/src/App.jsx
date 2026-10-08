@@ -3,17 +3,6 @@ import Task from './Task.jsx';
 import taskData from './tasks.js';
 import React, { useState } from 'react';
 
-function createTask(task)
-{
-  return (
-    <Task
-      key={task.id}
-      title={task.title}
-      description={task.description}
-      status={task.status}
-    />
-  )
-}
 
 function App() {
 
@@ -23,12 +12,57 @@ function App() {
       title: '', 
       description: '', 
       status: ''
-    })
+    });
+
+function handleEdit(id, taskStatus)
+{
+  setTasks(currTasks => {
+    return currTasks.map(currTask => {
+      if (currTask.id === id)
+      {
+        return {
+          ...currTask,
+          status: taskStatus
+        };
+      }
+
+      return currTask;
+    });
+  });
+}
+
+  function createTask(task)
+  {
+    return (
+      <Task
+        key={task.id}
+        id={task.id}
+        title={task.title}
+        description={task.description}
+        status={task.status}
+        onDelete={handleDelete}
+        onEdit={handleEdit}
+      />
+    ) 
+  }
+
+  function handleDelete(id)
+  {
+    setTasks(currTasks => {
+      return currTasks.filter(task => task.id !== id);
+    });
+  }
 
   function AddTask(e)
   {
     setTasks(currTasks => {
-        return [...currTasks, task];
+      const newTask = {
+        id: crypto.randomUUID(),
+        title: task.title,
+        description: task.description,
+        status: task.status
+      };
+        return [...currTasks, newTask];
     });
 
     e.preventDefault();
